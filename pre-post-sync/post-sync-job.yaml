@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: echo
-        image: alpine:latest
-        command: ["echo", "test string for post sync"]
+        image: busybox:latest
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
       restartPolicy: Never
   backoffLimit: 0
