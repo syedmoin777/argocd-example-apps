@@ -42,7 +42,7 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-  postSync:
+  preSync:
       hooks:
         - name: health-check
           hookType: Bash
