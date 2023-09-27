@@ -4,7 +4,6 @@ bases:
 - ../kustomize-guestbook
 
 resources:
-- argocd-application.yaml
 - grafana-deployment.yaml
 - grafana-service.yaml
 - grafana-health-check.yaml
