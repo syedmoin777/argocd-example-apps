@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: after
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: echo
+        image: busybox:latest
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
+      restartPolicy: Never
+  backoffLimit: 0
