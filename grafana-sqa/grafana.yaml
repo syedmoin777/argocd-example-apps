@@ -42,3 +42,10 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+  postSync:
+      hooks:
+        - name: health-check
+          hookType: Bash
+          manifest: |
+            #!/bin/bash
+            echo "Hello Kubernetes"
