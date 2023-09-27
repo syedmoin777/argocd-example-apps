@@ -22,4 +22,4 @@ spec:
         hookType: Bash
         manifest: |
           #!/bin/bash
-          kubectl rollout status deployment/grafana -n default
+          kubectl rollout status deployment/grafana -n argocd
