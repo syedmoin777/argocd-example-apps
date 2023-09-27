@@ -5,15 +5,13 @@ metadata:
   namespace: argocd  # Namespace where ArgoCD is deployed
 spec:
   destination:
-    namespace: default  # Namespace where you want to deploy Grafana
+    namespace: argocd  # Namespace where you want to deploy Grafana
     server: https://kubernetes.default.svc  # The Kubernetes API server URL
   source:
-    repoURL: https://github.com/your-repo/grafana-config.git  # Replace with your Git repository URL
-    targetRevision: main  # Replace with your desired Git branch/tag
-    path: ./  # Path to your Grafana deployment YAML files
-    helm:
-      valueFiles:
-        - values.yaml  # If you have a Helm values file, specify it here
+    repoURL: https://github.com/syedmoin777/argocd-example-apps.git  # Replace with your Git repository URL
+    targetRevision: master  # Replace with your desired Git branch/tag
+    path: grafana-post-sync  # Path to your Grafana deployment YAML files
+    
   project: default  # ArgoCD project to associate this application with
   syncPolicy:
     automated:
