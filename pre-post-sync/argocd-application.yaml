@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-app
+  namespace: argocd  # Namespace where ArgoCD is deployed
+spec:
+  destination:
+    namespace: default  # Namespace where you want to deploy Grafana
+    server: https://kubernetes.default.svc  # The Kubernetes API server URL
+  source:
+    repoURL: https://github.com/your-repo/grafana-config.git  # Replace with your Git repository URL
+    targetRevision: main  # Replace with your desired Git branch/tag
+    path: ./  # Path to your Grafana deployment YAML files
+    helm:
+      valueFiles:
+        - values.yaml  # If you have a Helm values file, specify it here
+  project: default  # ArgoCD project to associate this application with
+  syncPolicy:
+    automated:
+      prune: true  # Optionally, to prune resources not in the Git repository
+  postSync:
+    hooks:
+      - name: health-check
+        hookType: Bash
+        manifest: |
+          #!/bin/bash
+          kubectl rollout status deployment/grafana -n default
