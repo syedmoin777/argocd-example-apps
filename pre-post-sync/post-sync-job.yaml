@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitlab-access-token
+type: Opaque
+data:
+  token: Z2xwYXQtTVZtRl9LQlo0N3g0R3NpREV0YzMK
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -11,6 +19,12 @@ spec:
       containers:
       - name: echo
         image: gitlab.cloud-observability.akadns.net:5050/kupala/sqa_registry:latest
+        env:
+                  - name: GITLAB_ACCESS_TOKEN
+                    valueFrom:
+                      secretKeyRef:
+                        name: gitlab-access-token
+                        key: token
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
       restartPolicy: Never
   backoffLimit: 0
