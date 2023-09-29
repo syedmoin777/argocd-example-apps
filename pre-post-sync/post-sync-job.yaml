@@ -25,5 +25,3 @@ spec:
         imagePullSecrets:
             - name: gitlab-registry-secret
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
-      restartPolicy: Never
-  backoffLimit: 0
