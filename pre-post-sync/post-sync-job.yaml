@@ -15,7 +15,7 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
-    podSpec:
+    spec:
       containers:
       - name: echo
         image: gitlab.cloud-observability.akadns.net:5050/kupala/sqa_registry:latest
@@ -25,3 +25,5 @@ spec:
         imagePullSecrets:
             - name: gitlab-registry-secret
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
+      restartPolicy: Never
+  backoffLimit: 0
