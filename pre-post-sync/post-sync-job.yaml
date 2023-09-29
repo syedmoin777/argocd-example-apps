@@ -4,7 +4,7 @@ metadata:
   name: gitlab-access-token
 type: Opaque
 data:
-  token: Z2xwYXQtTVZtRl9LQlo0N3g0R3NpREV0YzMK
+  token: Z2xwYXQtRFFKUGJ6Nmp2V1J4MXF0SnRwYncK
 ---
 apiVersion: batch/v1
 kind: Job
