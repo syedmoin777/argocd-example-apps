@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: echo
-        image: busybox:latest
+        image: http://gitlab.cloud-observability.akadns.net:5050/kupala/sqa_registry:latest
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
       restartPolicy: Never
   backoffLimit: 0
