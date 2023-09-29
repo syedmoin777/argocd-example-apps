@@ -23,7 +23,7 @@ spec:
         ports:
             - containerPort: 80
         imagePullSecrets:
-            - name: gitlab-registry-secret-test-test
+            - name: gitlab-registry-secret-test-test-argocd
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
       restartPolicy: Never
   backoffLimit: 0
