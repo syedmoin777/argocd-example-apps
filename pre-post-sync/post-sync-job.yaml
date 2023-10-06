@@ -18,12 +18,8 @@ spec:
     spec:
       containers:
       - name: echo
-        image: gitlab.cloud-observability.akadns.net:5050/kupala/sqa_registry:latest
+        image: grafana/grafana:latest
         imagePullPolicy: Always
-        ports:
-            - containerPort: 80
-        imagePullSecrets:
-            - name: gitlab-registry-secret-test-test-argocd
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 600']
       restartPolicy: Never
   backoffLimit: 0
